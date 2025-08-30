@@ -197,8 +197,8 @@ section {
 }
 
 .btn-brand {
-    border-color: var(--brand);
-    background-color: var(--brand);
+    border-color: #c6a169;
+    background-color: #c6a169;
     color: #fff;
 }
 
@@ -207,8 +207,20 @@ section {
 }
 
 .btn-brand:hover {
-    background-color: #25324B;
-    border-color: #25324B;
+    background-color: #c6a169;
+    border-color: #c6a169;
+    color: #fff;
+}
+
+.btnn {
+    padding: 8px 26px;
+    background-color: #c6a169;
+    border-color: #c6a169;
+}
+
+.btnn:hover {
+    background-color: #a88652;
+    border-color: #c6a169;
     color: #fff;
 }
 

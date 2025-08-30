@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-auto">
-                    <p> <i class='bx bxs-envelope'></i> info@email.com</p>
+                    <p> <i class='bx bxs-envelope'></i> Elizabethdavies@email.com</p>
                 </div>
                 <div class="col-auto social-icons">
                     <a href="#"><i class='bx bxl-facebook'></i></a>
@@ -121,29 +121,67 @@
         </div>
     </section>
 
-    <!-- MILESTONE -->
-    <section id="milestone">
-        <div class="container">
-            <div class="row text-center justify-content-center gy-4">
-                <div class="col-lg-2 col-sm-6">
-                    <h1 class="display-4">80+</h1>
-                    <p class="mb-0">Mentored</p>
-                </div>
-                <div class="col-lg-2 col-sm-6">
-                    <h1 class="display-4">10+</h1>
-                    <p class="mb-0">Years in Ministry</p>
-                </div>
-                <div class="col-lg-2 col-sm-6">
-                    <h1 class="display-4">200+</h1>
-                    <p class="mb-0">Empowered</p>
-                </div>
-                <div class="col-lg-2 col-sm-6">
-                    <h1 class="display-4">320+</h1>
-                    <p class="mb-0">Lessons Taught</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- MILESTONE -->
+<section id="milestone" class="py-5">
+  <div class="container">
+    <div class="row text-center justify-content-center gy-4">
+      <div class="col-lg-2 col-sm-6">
+        <h1 class="display-4 counter" data-target="80">0</h1>
+        <p class="mb-0">Mentored</p>
+      </div>
+      <div class="col-lg-2 col-sm-6">
+        <h1 class="display-4 counter" data-target="10">0</h1>
+        <p class="mb-0">Years in Ministry</p>
+      </div>
+      <div class="col-lg-2 col-sm-6">
+        <h1 class="display-4 counter" data-target="200">0</h1>
+        <p class="mb-0">Empowered</p>
+      </div>
+      <div class="col-lg-2 col-sm-6">
+        <h1 class="display-4 counter" data-target="320">0</h1>
+        <p class="mb-0">Lessons Taught</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTUP SCRIPT -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll(".counter");
+    let started = false; // ensure it runs only once
+    const countUp = (el) => {
+      const target = +el.getAttribute("data-target");
+      const duration = 2000; // total animation time in ms
+      const increment = target / (duration / 16); // ~60fps
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          el.textContent = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          el.textContent = target + "+";
+        }
+      };
+
+      updateCounter();
+    };
+
+    // Observe when milestone section enters viewport
+    const milestoneSection = document.querySelector("#milestone");
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !started) {
+        counters.forEach((counter) => countUp(counter));
+        started = true;
+      }
+    }, { threshold: 0.5 });
+
+    observer.observe(milestoneSection);
+  });
+</script>
+
 
     <section id="services" class="bg-white services-section">
         <div class="container">
@@ -646,33 +684,56 @@
     </section>
 
     <footer>
-        <div class="footer-top text-center">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <h4 class="navbar-brand">Prixima<span class="dot">.</span></h4>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                            classical Latin literature from</p>
-                        <div class="col-auto social-icons">
-                            <a href="#"><i class='bx bxl-facebook'></i></a>
-                            <a href="#"><i class='bx bxl-twitter'></i></a>
-                            <a href="#"><i class='bx bxl-instagram'></i></a>
-                            <a href="#"><i class='bx bxl-pinterest'></i></a>
-                        </div>
-                        <div class="col-auto conditions-section">
-                            <a href="#">privacy</a>
-                            <a href="#">terms</a>
-                            <a href="#">disclaimer</i></a>
-                        </div>
-                    </div>
-                </div>
+      <div class="footer-top text-center py-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+    
+              <!-- Branding -->
+              <h4 class="navbar-brand">Elizabeth Davies<span class="dot">.</span></h4>
+              <p class="mb-4">
+                Elizabeth Davies is deeply passionate about inspiring others to experience God’s greatness 
+                in every area of their lives.
+              </p>
+    
+              <!-- Newsletter -->
+              <div class="subscribe-section mb-4">
+                <p class="fw-bold">Sign up with your email address to receive news and updates.</p>
+                <form class="d-flex justify-content-center">
+                  <input type="email" class="form-control w-50 me-2 bg-white" placeholder="Enter your email" required>
+                  <button type="submit" class="btnn btn-primary">Subscribe</button>
+                </form>
+              </div>
+    
+              <!-- Social Links -->
+              <div class="social-icons my-3">
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+              </div>
+    
+              <!-- Navigation Links -->
+              <div class="footer-links mt-3">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+                <a href="book.html">Book</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+              </div>
+    
             </div>
+          </div> 
         </div>
-        <div class="footer-bottom text-center">
-            <p class="mb-0">Copyright vicpra 2022. All rights Reserved</p> Distributed By <a
-                hrefs="https://themewagon.com">ThemeWagon</a>
-        </div>
+      </div>
+    
+      <!-- Bottom -->
+      <div class="footer-bottom text-center py-3">
+        <p class="mb-0">© 2025 Elizabeth Davies. All Rights Reserved.</p>
+        <p class="small">Designed with ❤️ to inspire and uplift lives.</p>
+      </div>
     </footer>
+    
 
 
     <!-- Modal -->
